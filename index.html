@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Strategy Bot Demo</title> <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <title>Strategy Bot Demo</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <div id="unity-container"></div> <div id="unityContainer" class="webgl-content"> <div class="game-clipper"> <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas> </div>
+    <div id="unity-container"></div>
+    <div id="unityContainer" class="webgl-content">
+        <div class="game-clipper">
+            <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+        </div>
     </div>
 
     <div id="loading-cover" style="display: none;">
@@ -21,8 +26,9 @@
             <p style="color: white; font-family: sans-serif; font-size: 1em; margin-top: 10px;">Loading...</p>
         </div>
     </div>
-    <div id="unity-fullscreen-button" style="display: none;"></div> <script>
-      // --- Build Configuration ---
+    <div id="unity-fullscreen-button" style="display: none;"></div>
+
+    <script>
       // IMPORTANT: Build name for THIS demo
       const buildName = "webBuild"; // <-- Build name for demo-clash-royale
 
@@ -31,18 +37,16 @@
 
       const config = {
         dataUrl: buildUrl + "/" + buildName + ".data", frameworkUrl: buildUrl + "/" + buildName + ".framework.js",
-        codeUrl: buildUrl + "/" + buildName + ".wasm", streamingAssetsUrl: "StreamingAssets", // If used
+        codeUrl: buildUrl + "/" + buildName + ".wasm", streamingAssetsUrl: "StreamingAssets",
         companyName: "My Company", productName: "Strategy Bot Demo", productVersion: "1.0",
       };
 
-      // --- DOM Element References ---
       const container = document.querySelector("#unityContainer"); const canvas = document.querySelector("#unity-canvas");
       const loadingCover = document.querySelector("#loading-cover");
       const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
       const progressBarFull = document.querySelector("#unity-progress-bar-full");
       const fullscreenButton = document.querySelector("#unity-fullscreen-button"); const spinner = document.querySelector('.spinner');
 
-      // --- Helper Functions and Initial Setup ---
       const canFullscreen = (function() {
         for (const key of ['exitFullscreen', 'webkitExitFullscreen', 'webkitCancelFullScreen', 'mozCancelFullScreen', 'msExitFullscreen',]) { if (key in document) { return true; } } return false; })();
 
